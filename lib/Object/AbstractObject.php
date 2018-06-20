@@ -54,9 +54,10 @@ abstract class AbstractObject implements \JsonSerializable
     public function __get($key)
     {
         if (!array_key_exists($key, $this->data)) {
-            throw new \InvalidArgumentException(
-                "Property '{$key}' does not exist for ".get_called_class()
-            );
+            return null;
+//            throw new \InvalidArgumentException(
+//                "Property '{$key}' does not exist for ".get_called_class()
+//            );
         }
         return $this->data[$key];
     }
@@ -72,9 +73,10 @@ abstract class AbstractObject implements \JsonSerializable
             return $this;
         }
         if (!is_null($value) && !$this->isValidValue($key, $value)) {
-            throw new \InvalidArgumentException(
-                "Invalid type for property '{$key}'"
-            );
+            return null;
+//            throw new \InvalidArgumentException(
+//                "Invalid type for property '{$key}'"
+//            );
         }
         $this->data[$key] = $value;
         $this->changedFields[$key] = $value;

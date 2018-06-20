@@ -17,7 +17,7 @@ class ProductService extends AbstractService
     {
         $endpoint = '/admin/products.json';
         $response = $this->request($endpoint, 'GET', $params);
-        return $this->createCollection(Product::class, $response['products']);
+        return $this->createCollection(Product::class, !empty($response) ? $response['products'] : false);
     }
 
     /**

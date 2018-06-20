@@ -96,13 +96,16 @@ class CustomCollectionService extends AbstractService
      *
      * @link   https://help.shopify.com/api/reference/customcollection#destroy
      * @param  CustomCollection $customCollection
-     * @return void
+     * @return boolean
      */
     public function delete(CustomCollection &$customCollection)
     {
-        $endpoint = '/admin/custom_collections/'.$customCollection->getId().'.json';
+        $endpoint = '/admin/custom_collections/'.$customCollection->id.'.json';
         $request = $this->createRequest($endpoint, static::REQUEST_METHOD_DELETE);
         $response = $this->send($request);
-        return;
+        if ($response == array()) {
+            return true;
+        }
+        return false;
     }
 }

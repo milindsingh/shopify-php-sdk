@@ -26,6 +26,7 @@ class ProductFields extends AbstractObjectEnum
     public function getFieldTypes()
     {
         return array(
+            'compare_at_price' => 'string',
             'body_html' => 'string',
             'created_at' => 'DateTime',
             'handle' => 'string',
@@ -43,6 +44,7 @@ class ProductFields extends AbstractObjectEnum
             'updated_at' => 'DateTime',
             'variants' => 'ProductVariant[]',
             'vendor' => 'string',
+            'published' => 'string',
             'image' => 'ProductImage'
         );
     }
